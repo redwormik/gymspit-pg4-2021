@@ -1,5 +1,6 @@
 ﻿using System;
 
+
 namespace Lecture1
 {
 	class Highway

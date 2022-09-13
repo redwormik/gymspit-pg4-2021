@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
+
 namespace Lecture1
 {
 	class City
@@ -28,7 +29,9 @@ namespace Lecture1
 		{
 			Highway highway = new Highway(this, otherCity, length);
 			highways.Add(highway);
-			otherCity.highways.Add(highway);
+			if (otherCity != this) {
+				otherCity.highways.Add(highway);
+			}
 		}
 	}
 }
