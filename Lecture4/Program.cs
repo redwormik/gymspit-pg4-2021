@@ -19,6 +19,12 @@ namespace Lecture4
 		}
 
 
+		static string ReadTranslation(string word)
+		{
+			return ReadLine(string.Format("Enter a translation of \"{0}\"", word));
+		}
+
+
 		static string ReadQuery()
 		{
 			return ReadLine("Enter a word to find");
@@ -31,7 +37,7 @@ namespace Lecture4
 
 			string word = ReadWord();
 			while (word != "") {
-				string translation = ReadLine(string.Format("Enter a translation of \"{0}\"", word));
+				string translation = ReadTranslation(word);
 				dictionary[word] = translation;
 				word = ReadWord();
 			}
@@ -42,6 +48,10 @@ namespace Lecture4
 					Console.WriteLine("Translation of \"{0}\" is \"{1}\".", query, dictionary[query]);
 				} else {
 					Console.WriteLine("Translation of \"{0}\" not found.", query);
+					string translation = ReadTranslation(query);
+					if (translation != "") {
+						dictionary[query] = translation;
+					}
 				}
 				query = ReadQuery();
 			}
