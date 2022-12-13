@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Lecture13ToDoList.View.ToDoItemList"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Lecture13ToDoList.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="764">
+
+    <UserControl.Resources>
+        <DataTemplate x:Key="toDoItemTemplate">
+            <StackPanel Orientation="Horizontal">
+                <CheckBox
+                    IsChecked="{Binding Path=Done}"
+                    HorizontalAlignment="Stretch"
+                    VerticalAlignment="Center"
+                />
+                <Label
+                    Content="{Binding Path=Label}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                />
+                <Button
+                    Content="Delete"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center" Click="Button_Click"
+                />
+            </StackPanel>
+        </DataTemplate>
+    </UserControl.Resources>
+
+    <Grid>
+        <ListBox
+            ItemsSource="{Binding}"
+            ItemTemplate="{StaticResource toDoItemTemplate}"
+            Width="764"
+            Height="450"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            Margin="0,0,0,0"
+        />
+    </Grid>
+</UserControl>
