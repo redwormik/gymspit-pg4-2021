@@ -23,7 +23,7 @@ namespace Lecture14.Model
 		public event PropertyChangedEventHandler PropertyChanged;
 
 
-		public Ingredient(int? Id, string Name)
+		public Ingredient(string Name)
 		{
 			_name = Name;
 		}

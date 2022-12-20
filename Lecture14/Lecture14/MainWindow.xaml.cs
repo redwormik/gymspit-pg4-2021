@@ -1,17 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace Lecture14
 {
@@ -20,9 +10,38 @@ namespace Lecture14
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		private ObservableCollection<Model.Ingredient> ingredients = new ObservableCollection<Model.Ingredient>();
+
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			ingredients.Add(new Model.Ingredient("Sugar"));
+			ingredients.Add(new Model.Ingredient("Flour"));
+			ingredients.Add(new Model.Ingredient("Cocoa"));
+
+			DataContext = ingredients;
+			if (ingredients.Count > 0) {
+				ingredient.SelectedItem = ingredients[0];
+			}
+		}
+
+
+		private void Button_Click(object sender, RoutedEventArgs e)
+		{
+			Model.Ingredient selected = (Model.Ingredient) ingredient.SelectedItem;
+			if (selected != null) {
+				MessageBox.Show(selected.Name);
+			}
+		}
+
+		private void DeleteButton_Click(object sender, RoutedEventArgs e)
+		{
+			Model.Ingredient selected = (Model.Ingredient) ingredientList.SelectedItem;
+			if (selected != null) {
+				ingredients.Remove(selected);
+			}
 		}
 	}
 }
